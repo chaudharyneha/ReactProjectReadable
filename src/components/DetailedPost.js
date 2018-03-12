@@ -37,7 +37,7 @@ class DetailedPost extends Component {
    else return (
       <div>
         {
-          !post.id? (
+          !post.id ? (
             <Route component={ NotFound }/>
           ) : (
             <article className="single">

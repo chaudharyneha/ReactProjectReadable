@@ -2,7 +2,7 @@ import {
     LOAD_CATEGORIES,
     SET_CATEGORY,
     SET_SORT
-} from '../actions';
+} from '../actions/types';
 
 const INITIAL_STATE = [];
 

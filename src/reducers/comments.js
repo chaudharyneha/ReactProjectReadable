@@ -5,7 +5,7 @@ import  {
     UPDATE_COMMENT,
     DELETE_POST_COMMENTS,
     VOTE_COMMENT
-} from '../actions';
+} from '../actions/types';
 
 const INITIAL_STATE = {}
 
