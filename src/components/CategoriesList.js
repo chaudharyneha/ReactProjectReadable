@@ -19,8 +19,16 @@ class CategoriesList extends Component {
     this.props.loadAllCategories();
   }
 
-  setCat = (categoryName) => this.props.changeCategory(categoryName)
-  setSort = (sortType) => this.props.changeSort(sortType)
+  setCat = (categoryName) => this.props.changeCategory(categoryName);
+  setSort = (sortType) => this.props.changeSort(sortType);
+  renderSorting = (sortTypes) => (
+    sortTypes.map((sortType, index) => (
+      <div key={index} className="sort-type">
+        <div className="sort-type-name">{sortType}</div>
+        <button className="sort up"onClick={this.setSort.bind(this, `${sortType}Up`)}> Inc </button>
+        <button className="sort down"onClick={this.setSort.bind(this, `${sortType}Down`)}> Dec </button><br /><br/>
+      </div>
+    )));
 
   render() {
 
@@ -29,7 +37,7 @@ class CategoriesList extends Component {
 
     return (
       <div className="categories">
-        <div>
+        <div className="top-bar">
           <h3>Select category</h3>
           <ul className="all-categories">
             { categories.map((cat, index) => (
@@ -44,16 +52,10 @@ class CategoriesList extends Component {
             )) }
           </ul>
         </div>
-        <div>
+        <div className="top-bar">
           <h3>Select Sort</h3>
           <div className="sorting">
-            {sortTypes.map((sortType, index) => (
-              <div key={index} className="sort-type">
-                <div className="sort-type-name">{sortType}</div>
-                <button className="sort up"onClick={this.setSort.bind(this, `${sortType}Up`)}> Inc </button>
-                <button className="sort down"onClick={this.setSort.bind(this, `${sortType}Down`)}> Dec </button><br /><br/>
-              </div>
-            ))}
+            {this.renderSorting(sortTypes)}
           </div>
         </div>
       </div>
@@ -61,10 +63,10 @@ class CategoriesList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({categories, sortedPosts}) => {
   return {
-    categories: state.categories,
-    currentCategory: state.sortedPosts.category
+    categories,
+    currentCategory: sortedPosts.category
   }
 }
 

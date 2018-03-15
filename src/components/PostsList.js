@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PostLayout from './PostLayout'
+import CreatePost from './CreatePost'
 import { loadPosts, setCategory } from '../actions'
 import { withRouter } from 'react-router-dom'
 
@@ -75,6 +76,7 @@ class PostsList extends Component {
 
     return (
       <section className="posts-list">
+        <CreatePost />
         { posts.length > 0 ?
           sortPosts().map((post) => (
             <PostLayout

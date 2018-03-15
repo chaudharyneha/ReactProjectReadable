@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from './Dashboard';
 import DetailedPost from './DetailedPost';
-// import CreatePost from './CreatePost';
+import Sidebar from './Sidebar';
 import CategoriesList from './CategoriesList';
 import PostsList from './PostsList';
 import CreatePost from './CreatePost';
@@ -18,18 +17,28 @@ class App extends Component {
           <div><h1><center>Readable Project</center></h1></div>
         </header>
         <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route path='/:category/:postId' render={(props) => <DetailedPost {...props} />} />
+          <Route exact path='/' render={(props) => (
+            <main>
+              <div className="sidebar">
+                <Sidebar />
+              </div>
+              <section className="posts-display">
+                <PostsList />
+              </section>
+            </main>
+          )}/>
           <Route path='/notfound' component={ NotFound } />
+          <Route path='/:category/:postId' render={(props) => <DetailedPost {...props} />} />
           <Route  path='/:category' render={(props) => (
-          <div className="category-post">
-            <CategoriesList />
-            <div className="content">
-              <CreatePost />
-              <PostsList />
-            </div>
-          </div>
-            )}/>
+            <main>
+              <div className="sidebar">
+                <Sidebar />
+              </div>
+              <section className="posts-display">
+                <PostsList />
+              </section>
+            </main>
+          )}/>
         </Switch>
       </div>
     );

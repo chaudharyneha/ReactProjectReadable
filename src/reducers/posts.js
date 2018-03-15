@@ -8,7 +8,7 @@ import  {
     VOTE_POST,
     DECREMENT_COMMENTS,
     INCREMENT_COMMENTS
-} from '../actions';
+} from '../actions/types';
 
 const INITIAL_STATE = []
 
